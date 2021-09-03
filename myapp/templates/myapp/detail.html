@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+{%block a%}
+
+
+
+{%load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+<p>
+    <a href="{% url 'myapp:update' sanu.id%}">Edit Form</a><br>
+    <a href="{% url 'myapp:home' %}">Home page</a>
+    <a href="{% url 'myapp:delete' sanu.id%}">Delete</a><br>
+
+</p>
+
+
+<h1> This is our detail pages </h1>
+<p>
+    {{sanu.name}}<br>
+    {{sanu.Value}}<br>
+    {{sanu.course}}<br>
+    {{sanu.msg}}<br><br><br><br><br><br>
+   {% if sanu.pics %}
+    <img src="{{ sanu.pics.url}}" class="img-responsive">
+    {% endif %}
+    <a href="/">Back</a>
+</p>
+
+
+{%endblock%}

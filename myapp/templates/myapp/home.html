@@ -1,0 +1,46 @@
+{% extends 'myapp/base.html'%}
+
+{%block a%}
+
+<h1> WEELCOME IN OUR HOME PAGE</h1>
+
+
+{% load static %}
+<link rel="stylesheet"type="text/css" href="{% static 'myapp/style.css' %}">
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'myapp:add_new' %}">Add New</a><br>
+<li>{{user.username}}</li>
+<li><a href="{% url 'myapp:logout' %}">Logout </a></li><br>
+
+{% else %}
+
+<li><a href="{% url 'myapp:login' %}">Login</a></li><br>
+<li><a href="{% url 'myapp:signup' %}">Signup</a></li><br>
+
+
+{% endif %}
+
+
+
+<p>
+
+{% for sanu in all_model %}
+<li>
+    <a href="/{{sanu.id}}">
+    {{sanu.name}}<br><br></a>
+    {{sanu.user}}
+    {{sanu.id}}
+     {% if sanu.pics %}
+     <img src="{{sanu.pics.url}}" class="img-responsive">
+     {% endif %}
+
+
+</li>
+
+
+{% endfor %}
+<p/>
+
+{%endblock%}

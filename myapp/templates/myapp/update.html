@@ -1,0 +1,14 @@
+{% extends 'myapp/base.html' %}
+{%block a%}
+
+
+<h1>Edit form </h1>
+
+<form method="POST" enctype="multipart/form-data" class="img-responsive">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Save</button>
+</form>
+</p>
+
+{%endblock%}
